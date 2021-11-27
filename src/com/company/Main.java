@@ -55,10 +55,32 @@ public class Main
                 }
                 break;
             case 3:
-                System.out.println("masuk menu pilihan 3");
+                System.out.println("masuk menu pilihan 3 - update Data");
+                try
+                {
+                    System.out.println("masukkan ID yang akan diupdate : ");
+                    int ID = this.input.nextInt();
+                    System.out.println("masukkan Tanggal registrasi : ");
+                    String tanggal = this.input.next();
+                    this.manipulated.updateData(ID,tanggal);
+                }
+                catch (SQLException e)
+                {
+                    e.printStackTrace();
+                }
                 break;
             case 4:
-                System.out.println("masuk menu pilihan 4");
+                System.out.println("masuk menu pilihan Delete Data");
+                System.out.println("masukkan ID yang akan diupdate : ");
+                int ID = this.input.nextInt();
+                try
+                {
+                    this.manipulated.deleteData(ID);
+                }
+                catch (SQLException e)
+                {
+                    e.printStackTrace();
+                }
                 break;
             case 0:
                 System.out.println("EXIT");

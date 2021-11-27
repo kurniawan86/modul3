@@ -29,4 +29,14 @@ public class Data_Siswa
             System.out.println("===================");
         }
     }
+
+    public boolean searchDataById(int id) {
+        boolean cek = false;
+        for (int i = 0; i < this.students.size(); i++) {
+            if (id == this.students.get(i).getID()) {
+                cek = true;
+            }
+        }
+        return cek;
+    }
 }

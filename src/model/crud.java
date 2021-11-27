@@ -21,6 +21,7 @@ public class crud
 
     public void viewData()
     {
+        System.out.println("==== DATA SISWA =====");
         this.data.view();
     }
 
@@ -45,7 +46,8 @@ public class crud
         }
     }
 
-    public void tambahData(String nama, String pass, String waktu) throws SQLException {
+    public void tambahData(String nama, String pass, String waktu) throws SQLException
+    {
         String sql = "INSERT INTO siswa(id,nama,password,waktu) VALUES(?,?,?,?)";
         PreparedStatement prepared =  this.konek.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
         prepared.setInt(1,0);
@@ -54,5 +56,40 @@ public class crud
         prepared.setString(4, waktu);
         prepared.executeUpdate();
         this.setData();
+    }
+
+    public void updateData(int ID, String tanggal) throws SQLException
+    {
+        boolean cek = this.data.searchDataById(ID);
+        if (cek == true)
+        {
+            String sql = "update siswa set waktu = ? where id=?";
+            PreparedStatement prepared = this.konek.prepareStatement(sql);
+            prepared.setInt(2, ID);
+            prepared.setString(1, tanggal);
+            prepared.executeUpdate();
+            this.setData();
+        }
+        else
+        {
+            System.out.println("data not found");
+        }
+    }
+
+    public void deleteData(int ID) throws SQLException
+    {
+        boolean cek = this.data.searchDataById(ID);
+        if (cek == true)
+        {
+            String sql = "delete from siswa where id = ?";
+            PreparedStatement prepared = this.konek.prepareStatement(sql);
+            prepared.setInt(1, ID);
+            prepared.executeUpdate();
+            this.setData();
+        }
+        else
+        {
+            System.out.println("DATA NOT FOUND");
+        }
     }
 }

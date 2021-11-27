@@ -2,10 +2,10 @@ package entity;
 
 public class siswa
 {
-    int id;
-    String nama;
-    String pass;
-    String date;
+    private int id;
+    private String nama;
+    private String pass;
+    private String date;
 
     public siswa(int id, String nm, String password, String waktu)
     {
@@ -20,5 +20,10 @@ public class siswa
         System.out.println("nama : "+this.nama);
         System.out.println("id : "+this.id);
         System.out.println("waktu pendaftaran : "+this.date);
+    }
+
+    public int getID()
+    {
+        return this.id;
     }
 }
