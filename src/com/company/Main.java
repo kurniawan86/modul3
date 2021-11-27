@@ -7,8 +7,13 @@ import java.util.Scanner;
 
 public class Main
 {
-    static void menu_program()
-    {
+    crud manipulated;
+
+    public Main() throws SQLException {
+        manipulated = new crud();
+    }
+
+    private void menu_program() throws SQLException {
         System.out.println("=================================");
         System.out.println("selamat datang pada TUGAS MODUL 3");
         System.out.println("=================================");
@@ -22,12 +27,14 @@ public class Main
             pilihan(pilih);
         }
     }
-    static void pilihan(int pilih)
+    private void pilihan(int pilih)
     {
+
         switch (pilih)
         {
             case 1:
-                System.out.println("masuk menu pilihan 1");
+                System.out.println("masuk menu view data");
+                this.manipulated.viewData();
                 break;
             case 2:
                 System.out.println("masuk menu pilihan 2");
@@ -46,7 +53,7 @@ public class Main
                 break;
         }
     }
-    static void menu_pilihan()
+    private static void menu_pilihan()
     {
         System.out.println("===================");
         System.out.println("1. menu tampil data");
@@ -58,9 +65,7 @@ public class Main
     }
     public static void main(String[] args) throws SQLException
     {
-//        crud manipulated = new crud();
-//        manipulated.viewData();
-//        manipulated.tambahData("aan", "123","11-11-2020");
-        menu_program();
+        Main utama=new Main();
+        utama.menu_program();
     }
 }
