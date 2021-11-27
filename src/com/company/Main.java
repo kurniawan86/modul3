@@ -8,9 +8,11 @@ import java.util.Scanner;
 public class Main
 {
     crud manipulated;
+    Scanner input;
 
     public Main() throws SQLException {
         manipulated = new crud();
+        input = new Scanner(System.in);
     }
 
     private void menu_program() throws SQLException {
@@ -18,12 +20,11 @@ public class Main
         System.out.println("selamat datang pada TUGAS MODUL 3");
         System.out.println("=================================");
         int pilih = 100;
-        Scanner input = new Scanner(System.in);
         while (pilih != 0)
         {
             menu_pilihan();
             System.out.print("masukkan pilihan: ");
-            pilih = input.nextInt();
+            pilih = this.input.nextInt();
             pilihan(pilih);
         }
     }
@@ -37,7 +38,21 @@ public class Main
                 this.manipulated.viewData();
                 break;
             case 2:
-                System.out.println("masuk menu pilihan 2");
+                System.out.println("masuk menu insert data");
+                System.out.print("masukkan nama: ");
+                String nama = this.input.next();
+                System.out.print("masukkan pass: ");
+                String pass = this.input.next();
+                System.out.print("masukkan waktu (dd-mm-yyyy): ");
+                String date = this.input.next();
+                try
+                {
+                    this.manipulated.tambahData(nama, pass, date);
+                }
+                catch (SQLException e)
+                {
+                    e.printStackTrace();
+                }
                 break;
             case 3:
                 System.out.println("masuk menu pilihan 3");
@@ -65,7 +80,7 @@ public class Main
     }
     public static void main(String[] args) throws SQLException
     {
-        Main utama=new Main();
+        Main utama = new Main();
         utama.menu_program();
     }
 }
